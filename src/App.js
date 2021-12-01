@@ -1,24 +1,22 @@
-/*global chrome*/
-import logo from './logo.svg';
-import './App.css';
+/*global chrome*/ // eslint-disable-line no-unused-vars
+import WelcomeScreen from "./screens/welcome/welcomeScreen.jsx";
 
-function App() {
+import {
+  // goBack,
+  // goTo,
+  // popToTop,
+  // Link,
+  Router,
+  // getCurrent,
+  // getComponentStack,
+} from "react-chrome-extension-router";
+
+const App = () => {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>Woah it's a React Chrome extension...</p>
-        <a
-          className='App-link'
-          href='https://developer.chrome.com/docs/extensions/mv3/getstarted/'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          View Extension Dev Docs
-        </a>
-      </header>
-    </div>
+    <Router>
+      <WelcomeScreen />
+    </Router>
   );
-}
+};
 
 export default App;
