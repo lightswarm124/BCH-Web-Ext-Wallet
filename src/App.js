@@ -1,6 +1,6 @@
 /*global chrome*/ // eslint-disable-line no-unused-vars
-import WelcomeScreen from "./screens/welcome/welcomeScreen.jsx";
-
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import {
   // goBack,
   // goTo,
@@ -11,11 +11,20 @@ import {
   // getComponentStack,
 } from "react-chrome-extension-router";
 
+import { getStore } from "./data/store";
+import WelcomeScreen from "./screens/welcome/welcomeScreen.jsx";
+
+const { store, persistor } = getStore();
+
 const App = () => {
   return (
-    <Router>
-      <WelcomeScreen />
-    </Router>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Router>
+          <WelcomeScreen />
+        </Router>
+      </PersistGate>
+    </Provider>
   );
 };
 
